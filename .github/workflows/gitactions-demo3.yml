@@ -1,7 +1,10 @@
 name: GitActions-Demo3
+
 on:
   schedule:
-    - cron: '51 03 * * *'
+    # 한국 시간(KST) 13:05에 실행되도록 설정
+    # KST 13:05 = UTC 04:05
+    - cron: '5 4 * * *' # 분(5) 시(4) 일(*) 월(*) 요일(*)
 
 jobs:
   check-time:
@@ -9,6 +12,6 @@ jobs:
     steps:
       - name: Report current time
         run: |
-          echo "This workflow ran on a schedule!"
+          echo "This workflow ran on a schedule (KST 13:05)!"
           echo "Current UTC time: $(date -u)"
           echo "Current local time (on runner): $(date)"
